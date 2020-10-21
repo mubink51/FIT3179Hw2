@@ -47,7 +47,7 @@
         "format": ".2f"
       },
       {"field": "count", "type": "quantitative", "title": "Total McDonalds"},
-      {"field": "population", "type": "quantitative", "format": ""}
+      {"field": "population", "type": "quantitative", "format": ","}
     ]
   },
   "config": {}
