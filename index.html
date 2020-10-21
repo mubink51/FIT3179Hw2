@@ -10,10 +10,16 @@
 <body>
 
 <div id="vis"></div>
-
+<div id="vis2"></div>
 <script type="text/javascript">
-  var spec = "https://raw.githubusercontent.com/mubink51/FIT3179/main/McDonalds_Choropleth.json";
+  var spec = "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/McDonalds_Choropleth.json";
   vegaEmbed('#vis', spec).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+
+  var spec2 = "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/week10.json";
+  vegaEmbed('#vis2', spec2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
