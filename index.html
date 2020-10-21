@@ -8,20 +8,27 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body>
-  <h1> Hey! </h1>
-<div id="vis"></div>
+<h1> Hey! </h1>
+  
 <div id="vis2"></div>
+  
+<div id="vis"></div>
+
 <script type="text/javascript">
+  var spec2 = "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/week10.json";
+  
+  vegaEmbed('#vis2', spec2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
   var spec = "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/McDonalds_Choropleth.json";
+  
   vegaEmbed('#vis', spec).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
 
-  var spec2 = "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/week10.json";
-  vegaEmbed('#vis2', spec2).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
+ 
 
 </script>
 </body>
