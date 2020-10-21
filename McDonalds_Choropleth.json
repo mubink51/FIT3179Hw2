@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 500,
+  "title": "Number of McDonalds per Million Residents by State",
+  "data": {
+    "url": "https://raw.githubusercontent.com/mubink51/FIT3179/main/ne_110m_admin_1_states_provinces.json",
+    "format": {
+      "type": "topojson",
+      "feature": "ne_110m_admin_1_states_provinces"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/mubink51/FIT3179/main/mcdonalds_state_pop.csv"
+        },
+        "key": "state_name",
+        "fields": ["count_per_pop", "count", "population"]
+      }
+    },
+    {"calculate": "datum.count_per_pop", "as": "count2"},
+    {"calculate": "datum.count", "as": "count"}
+  ],
+  "projection": {"type": "albersUSA"},
+  "selection": {"picked": {"type": "single", "on": "mouseover"}},
+  "mark": {"type": "geoshape", "stroke": "white"},
+  "encoding": {
+    "color": {
+      "condition": {
+        "selection": "picked",
+        "field": "count2",
+        "type": "quantitative",
+        "scale": {"type": "threshold", "domain": [10, 35, 40, 45, 50, 55]},
+        "legend": {"title": "Count"}
+      },
+      "value": "gray"
+    },
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "State"},
+      {
+        "field": "count2",
+        "type": "quantitative",
+        "title": "McDonalds per Million Residents",
+        "format": ".2f"
+      },
+      {"field": "count", "type": "quantitative", "title": "Total McDonalds"},
+      {"field": "population", "type": "quantitative", "format": ""}
+    ]
+  },
+  "config": {}
+}
