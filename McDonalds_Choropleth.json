@@ -5,7 +5,7 @@
   "padding": 20,
   "titlePadding": 300,
   "width": 800,
-  "height": 500,
+  "height": 600,
   "config": {"style": {"cell": {"stroke": "transparent"}}},
   "title": {
     "text": "Number of McDonalds per Million Residents by State",
