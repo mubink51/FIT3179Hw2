@@ -1,54 +1,153 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "background": "#f5f3ed",
+  "border": "none",
+  "padding": 20,
+  "titlePadding": 300,
   "width": 800,
   "height": 500,
-  "title": "Number of McDonalds per Million Residents by State",
-  "data": {
-    "url": "https://raw.githubusercontent.com/mubink51/FIT3179/main/ne_110m_admin_1_states_provinces.json",
-    "format": {
-      "type": "topojson",
-      "feature": "ne_110m_admin_1_states_provinces"
-    }
+  "config": {"style": {"cell": {"stroke": "transparent"}}},
+  "title": {
+    "text": "Number of McDonalds per Million Residents by State",
+    "fontSize": 30,
+    "frame": "group"
   },
-  "transform": [
+  "style": "cell",
+  "data": [
+    {"name": "picked_store"},
     {
-      "lookup": "properties.name",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/mubink51/FIT3179/main/mcdonalds_state_pop.csv"
+      "name": "source_1",
+      "url": "https://raw.githubusercontent.com/mubink51/FIT3179/main/mcdonalds_state_pop.csv",
+      "format": {"type": "csv", "delimiter": ","}
+    },
+    {
+      "name": "source_0",
+      "url": "https://raw.githubusercontent.com/mubink51/FIT3179/main/ne_110m_admin_1_states_provinces.json",
+      "format": {
+        "type": "topojson",
+        "feature": "ne_110m_admin_1_states_provinces",
+        "parse": {}
+      },
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum[\"properties\"] && datum[\"properties\"][\"name\"]",
+          "as": "properties.name"
         },
-        "key": "state_name",
-        "fields": ["count_per_pop", "count", "population"]
-      }
-    },
-    {"calculate": "datum.count_per_pop", "as": "count2"},
-    {"calculate": "datum.count", "as": "count"}
+        {"type": "identifier", "as": "_vgsid_"},
+        {
+          "type": "lookup",
+          "from": "source_1",
+          "key": "state_name",
+          "fields": ["properties.name"],
+          "values": ["count_per_pop", "count", "population"]
+        },
+        {"type": "formula", "expr": "datum.count_per_pop", "as": "count2"},
+        {"type": "formula", "expr": "datum.count", "as": "count"},
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"count2\"]) && isFinite(+datum[\"count2\"])"
+        }
+      ]
+    }
   ],
-  "projection": {"type": "albersUSA"},
-  "selection": {"picked": {"type": "single", "on": "mouseover"}},
-  "mark": {"type": "geoshape", "stroke": "white"},
-  "encoding": {
-    "color": {
-      "condition": {
-        "selection": "picked",
-        "field": "count2",
-        "type": "quantitative",
-        "scale": {"type": "threshold", "domain": [10, 35, 40, 45, 50, 55]},
-        "legend": {"title": "Count"}
-      },
-      "value": "gray"
+  "projections": [
+    {
+      "name": "projection",
+      "size": {"signal": "[width, height]"},
+      "fit": {"signal": "data('source_0')"},
+      "type": "albersUSA"
+    }
+  ],
+  "signals": [
+    {
+      "name": "unit",
+      "value": {},
+      "on": [
+        {"events": "mousemove", "update": "isTuple(group()) ? group() : unit"}
+      ]
     },
-    "tooltip": [
-      {"field": "properties.name", "type": "nominal", "title": "State"},
-      {
-        "field": "count2",
-        "type": "quantitative",
-        "title": "McDonalds per Million Residents",
-        "format": ".2f"
+    {
+      "name": "picked",
+      "update": "vlSelectionResolve(\"picked_store\", \"union\")"
+    },
+    {
+      "name": "picked_tuple",
+      "on": [
+        {
+          "events": [{"source": "scope", "type": "mouseover"}],
+          "update": "datum && item().mark.marktype !== 'group' ? {unit: \"\", fields: picked_tuple_fields, values: [(item().isVoronoi ? datum.datum : datum)[\"_vgsid_\"]]} : null",
+          "force": true
+        },
+        {"events": [{"source": "scope", "type": "dblclick"}], "update": "null"}
+      ]
+    },
+    {
+      "name": "picked_tuple_fields",
+      "value": [{"type": "E", "field": "_vgsid_"}]
+    },
+    {
+      "name": "picked_modify",
+      "on": [
+        {
+          "events": {"signal": "picked_tuple"},
+          "update": "modify(\"picked_store\", picked_tuple, true)"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "name": "marks",
+      "type": "shape",
+      "style": ["geoshape"],
+      "interactive": true,
+      "from": {"data": "source_0"},
+      "encode": {
+        "update": {
+          "stroke": {"value": "white"},
+          "fill": [
+            {
+              "test": "!(length(data(\"picked_store\"))) || (vlSelectionTest(\"picked_store\", datum))",
+              "scale": "color",
+              "field": "count2"
+            },
+            {"value": "gray"}
+          ],
+          "tooltip": {
+            "signal": "{\"State\": isValid(datum[\"properties.name\"]) ? datum[\"properties.name\"] : \"\"+datum[\"properties.name\"], \"McDonalds per Million Residents\": format(datum[\"count2\"], \".2f\"), \"Total McDonalds\": format(datum[\"count\"], \"\"), \"population\": format(datum[\"population\"], \",\")}"
+          },
+          "ariaRoleDescription": {"value": "geoshape"},
+          "description": {
+            "signal": "\"count2: \" + (format(datum[\"count2\"], \"\")) + \"; State: \" + (isValid(datum[\"properties.name\"]) ? datum[\"properties.name\"] : \"\"+datum[\"properties.name\"]) + \"; McDonalds per Million Residents: \" + (format(datum[\"count2\"], \".2f\")) + \"; Total McDonalds: \" + (format(datum[\"count\"], \"\")) + \"; population: \" + (format(datum[\"population\"], \",\"))"
+          }
+        }
       },
-      {"field": "count", "type": "quantitative", "title": "Total McDonalds"},
-      {"field": "population", "type": "quantitative", "format": ","}
-    ]
-  },
-  "config": {}
+      "transform": [{"type": "geoshape", "projection": "projection"}]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "threshold",
+      "domain": [10, 35, 40, 45, 50, 55],
+      "range": "heatmap",
+      "interpolate": "hcl"
+    }
+  ],
+  "legends": [
+    {
+      "direction": "horizontal",
+      "orient": "none",
+      "legendY": 10,
+      "legendX": 530,
+      "title": "Number of McDonalds",
+      "titleAlign": "left",
+      "titleFontSize": 15,
+      "fill": "color",
+      "labelOverlap": "greedy",
+      "symbolType": "circle",
+      "encode": {"symbols": {"update": {"stroke": {"value": "white"}}}}
+    }
+  ]
 }
