@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 550,
+  "background": "#f5f3ed",
+  "title": {"text": "US Election Results 1996-2016", "fontSize": 30},
+  "data": {
+    "url": "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/ne_110m_admin_1_states_provinces%20(1).json",
+    "format": {
+      "type": "topojson",
+      "feature": "ne_110m_admin_1_states_provinces"
+    }
+  },
+  "params": [
+    {
+      "name": "year_select",
+      "value": 2016,
+      "bind": {
+        "input": "range",
+        "min": 1996,
+        "max": 2016,
+        "step": 4,
+        "name": "Select Election"
+      }
+    }
+  ],
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/elections96_16.csv"
+        },
+        "key": "State",
+        "fields": ["2016", "2012", "2008", "2004", "2000", "1996", "State"]
+      }
+    },
+    {"calculate": "datum[year_select]", "as": "year_selection"}
+  ],
+  "projection": {"type": "albersUSA"},
+  "mark": {"type": "geoshape", "stroke": "white"},
+  "encoding": {
+    "color": {
+      "field": "year_selection",
+      "type": "nominal",
+      "title": "Party",
+      "scale": {"range": ["#125be3", "#e31212"]}
+    },
+    "tooltip": {"field": "year_selection"}
+  },
+  "config": {
+    "legend": {
+      "orient": "none",
+      "legendX": 520,
+      "legendY": 30,
+      "direction": "horizontal",
+      "labelFontSize": 12,
+      "titleFontSize": 15,
+      "titlePadding": 5
+    }
+  }
+}
