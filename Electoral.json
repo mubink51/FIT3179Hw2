@@ -38,6 +38,14 @@
     {"calculate": "datum[year_select]", "as": "year_selection"}
   ],
   "projection": {"type": "albersUSA"},
+  "selection": {
+    "region_highlight": {
+      "type": "multi",
+      "fields": ["State"],
+      "bind": "legend",
+      "on": "mouseover"
+    }
+  },
   "mark": {"type": "geoshape", "stroke": "white"},
   "encoding": {
     "color": {
@@ -45,6 +53,10 @@
       "type": "nominal",
       "title": "Party",
       "scale": {"range": ["#125be3", "#e31212"]}
+    },
+    "opacity": {
+      "condition": {"selection": "region_highlight", "value": 0.9},
+      "value": 0.2
     },
     "tooltip": [
       {"field": "State", "title": "State"},
