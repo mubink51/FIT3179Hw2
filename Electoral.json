@@ -46,7 +46,10 @@
       "title": "Party",
       "scale": {"range": ["#125be3", "#e31212"]}
     },
-    "tooltip": {"field": "year_selection"}
+    "tooltip": [
+      {"field": "State", "title": "State"},
+      {"field": "year_selection", "title": "Party"}
+    ]
   },
   "config": {
     "legend": {
@@ -57,6 +60,7 @@
       "labelFontSize": 12,
       "titleFontSize": 15,
       "titlePadding": 5
-    }
+    },
+    "style": {"cell": {"stroke": "transparent"}}
   }
 }
