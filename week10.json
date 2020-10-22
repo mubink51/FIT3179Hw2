@@ -3,7 +3,6 @@
   "width": 800,
   "height": 600,
   "background": "#f5f3ed",
-  "config": {"style": {"cell": {"stroke": "transparent"}}},
   "title": {
     "text": "Comparison of Income and Population across US states 2018 ",
     "fontSize": 30
@@ -139,5 +138,6 @@
         }
       }
     }
-  ]
+  ],
+  "config": {}
 }
