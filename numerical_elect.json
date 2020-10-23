@@ -1,0 +1,102 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 550,
+  "background": "#f5f3ed",
+  "title": {"text": "US Election Results 1996-2016", "fontSize": 30},
+  "data": {
+    "url": "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/ne_110m_admin_1_states_provinces%20(1).json",
+    "format": {
+      "type": "topojson",
+      "feature": "ne_110m_admin_1_states_provinces"
+    }
+  },
+  "params": [
+    {
+      "name": "year_select",
+      "value": 2016,
+      "bind": {
+        "input": "range",
+        "min": 1996,
+        "max": 2016,
+        "step": 4,
+        "name": "Select Election"
+      }
+    }
+  ],
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/elections96_16numeric.csv"
+        },
+        "key": "State",
+        "fields": [
+          "2016",
+          "2012",
+          "2008",
+          "2004",
+          "2000",
+          "1996",
+          "State",
+          "2016r",
+          "2012r",
+          "2008r",
+          "2004r",
+          "2000r",
+          "1996r"
+        ]
+      }
+    },
+    {"calculate": "datum[year_select]-0.5", "as": "year_selection"},
+    {"calculate": "datum[year_select+'r']", "as": "year_win"},
+    {"calculate": "abs(datum[year_select]-0.5)", "as": "tooltipp"}
+  ],
+  "projection": {"type": "albersUsa"},
+  "selection": {
+    "region_highlight": {
+      "type": "multi",
+      "fields": ["State"],
+      "bind": "legend",
+      "on": "mouseover"
+    }
+  },
+  "mark": {"type": "geoshape", "stroke": "white"},
+  "encoding": {
+    "stroke": {
+      "condition": {"selection": "region_highlight", "value": "white"},
+      "value": "black"
+    },
+    "color": {
+      "field": "year_selection",
+      "type": "quantitative",
+      "title": "Party",
+      "scale": {
+        "domain": [-0.2, 0, 0.2],
+        "range": ["#0571b0", "#92c5de", "#f7f7f7", "#f4a582", "#ca0020"]
+      }
+    },
+    "opacity": {
+      "condition": {"selection": "region_highlight", "value": 0.9},
+      "value": 0.2
+    },
+    "tooltip": [
+      {"field": "State", "title": "State"},
+      {"field": "year_win", "title": "Winning Party"},
+      {"field": "tooltipp", "title": "Margin of Victory", "format": ".2f"}
+    ]
+  },
+  "config": {
+    "legend": {
+      "orient": "none",
+      "legendX": 520,
+      "legendY": 30,
+      "direction": "horizontal",
+      "labelFontSize": 12,
+      "titleFontSize": 15,
+      "titlePadding": 5
+    },
+    "style": {"cell": {"stroke": "transparent"}}
+  }
+}
