@@ -67,7 +67,7 @@
           "field": "Average_Age",
           "type": "quantitative",
           "title": "Average Age",
-          "axis": {"tickCount": 3, "titleFontSize": 20},
+          "axis": {"tickCount": 5, "titleFontSize": 20},
           "scale": {"type": "linear", "domain": [32, 43]}
         },
         "y": {
@@ -84,15 +84,17 @@
             "field": "Average_Income",
             "title": "Average Income",
             "format": "$00,.0f"
-          }
+          },
+          {"field": "population", "title": "Population", "format": ","}
         ],
         "size": {
           "field": "population",
           "scale": {
             "type": "threshold",
             "domain": [1000000, 2500000, 5000000, 10000000],
-            "range": [300, 600, 900, 1200, 1500]
-          }
+            "range": [330, 600, 900, 1200, 1500]
+          },
+          "legend": {"format": ".1s"}
         },
         "color": {
           "field": "Region",
