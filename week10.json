@@ -4,7 +4,7 @@
   "height": 600,
   "background": "#f5f3ed",
   "title": {
-    "text": "Comparison of Income and Population across US states 2018 ",
+    "text": "Comparison of Income and Average Age across US states 2018 ",
     "fontSize": 30
   },
   "data": {
@@ -64,11 +64,11 @@
       "mark": "circle",
       "encoding": {
         "x": {
-          "field": "population",
+          "field": "Average_Age",
           "type": "quantitative",
-          "title": "Population",
+          "title": "Average Age",
           "axis": {"tickCount": 3, "titleFontSize": 20},
-          "scale": {"type": "log", "domain": [500000, 50000000]}
+          "scale": {"type": "linear", "domain": [32, 43]}
         },
         "y": {
           "field": "avg_income",
@@ -87,11 +87,11 @@
           }
         ],
         "size": {
-          "field": "Average_Age",
+          "field": "population",
           "scale": {
             "type": "threshold",
-            "domain": [33, 35, 37, 39],
-            "range": [100, 300, 600, 1000, 2000]
+            "domain": [1000000, 2500000, 5000000, 10000000],
+            "range": [300, 600, 900, 1200, 1500]
           }
         },
         "color": {
@@ -117,11 +117,10 @@
       },
       "encoding": {
         "x": {
-          "field": "population",
+          "field": "Average_Age",
           "type": "quantitative",
-          "title": "Population",
-          "axis": {"tickCount": 3},
-          "scale": {"type": "log", "domain": [500000, 50000000]}
+          "title": "Average Age",
+          "axis": {"tickCount": 3}
         },
         "y": {
           "field": "avg_income",
