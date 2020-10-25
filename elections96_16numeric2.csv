@@ -1,0 +1,52 @@
+﻿State,2016_Dem,2016_Rep,2012_Dem,2012_Rep,2008_Dem,2008_Rep,2004_Dem,2004_Rep,2000_Dem,2000_Rep,1996_Dem,1996_Rep,MOV2016,MOV2012,MOV2008,MOV2004,MOV2000,MOV1996,WP2016,WP2012,WP2008,WP2004,WP2000,WP1996
+Alabama,0.34,0.62,0.38,0.61,0.39,0.6,0.37,0.62,0.42,0.56,0.43,0.5,0.28,0.23,0.21,0.25,0.14,0.07,Republican,Republican,Republican,Republican,Republican,Republican
+Alaska,0.37,0.51,0.41,0.55,0.38,0.59,0.36,0.61,0.28,0.59,0.33,0.51,0.14,0.14,0.21,0.25,0.31,0.18,Republican,Republican,Republican,Republican,Republican,Republican
+Arizona,0.45,0.49,0.45,0.54,0.45,0.54,0.44,0.55,0.45,0.51,0.47,0.44,0.04,0.09,0.09,0.11,0.06,-0.03,Republican,Republican,Republican,Republican,Republican,Democrat
+Arkansas,0.34,0.61,0.37,0.61,0.39,0.59,0.45,0.54,0.46,0.51,0.54,0.37,0.27,0.24,0.2,0.09,0.05,-0.17,Republican,Republican,Republican,Republican,Republican,Democrat
+California,0.62,0.32,0.6,0.37,0.61,0.37,0.54,0.44,0.53,0.42,0.51,0.38,-0.3,-0.23,-0.24,-0.1,-0.11,-0.13,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+Colorado,0.48,0.43,0.51,0.46,0.54,0.45,0.47,0.52,0.42,0.51,0.44,0.46,-0.05,-0.05,-0.09,0.05,0.09,0.02,Democrat,Democract,Democrat,Republican,Republican,Republican
+Connecticut,0.55,0.41,0.58,0.41,0.61,0.38,0.54,0.44,0.56,0.38,0.53,0.35,-0.14,-0.17,-0.23,-0.1,-0.18,-0.18,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+Delaware,0.53,0.42,0.59,0.4,0.62,0.37,0.53,0.46,0.55,0.42,0.52,0.37,-0.11,-0.19,-0.25,-0.07,-0.13,-0.15,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+District of Columbia,0.91,0.04,0.91,0.07,0.92,0.07,0.89,0.09,0.85,0.09,0.85,0.09,-0.87,-0.84,-0.85,-0.8,-0.76,-0.76,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+Florida,0.48,0.49,0.5,0.49,0.51,0.48,0.47,0.52,0.49,0.49,0.48,0.42,0.01,-0.01,-0.03,0.05,0,-0.06,Republican,Democract,Democrat,Republican,Democrat,Democrat
+Georgia,0.46,0.51,0.45,0.53,0.47,0.52,0.41,0.58,0.43,0.55,0.46,0.47,0.05,0.08,0.05,0.17,0.12,0.01,Republican,Republican,Republican,Republican,Republican,Republican
+Hawaii,0.62,0.3,0.71,0.28,0.72,0.27,0.54,0.45,0.56,0.37,0.57,0.32,-0.32,-0.43,-0.45,-0.09,-0.19,-0.25,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+Idaho,0.27,0.59,0.33,0.65,0.36,0.62,0.3,0.68,0.28,0.67,0.34,0.52,0.32,0.32,0.26,0.38,0.39,0.18,Republican,Republican,Republican,Republican,Republican,Republican
+Illinois,0.56,0.39,0.58,0.41,0.62,0.37,0.55,0.44,0.55,0.43,0.54,0.37,-0.17,-0.17,-0.25,-0.11,-0.12,-0.17,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+Indiana,0.38,0.57,0.44,0.54,0.5,0.49,0.39,0.6,0.41,0.57,0.42,0.47,0.19,0.1,-0.01,0.21,0.16,0.05,Republican,Republican,Democrat,Republican,Republican,Republican
+Iowa,0.42,0.51,0.52,0.46,0.54,0.44,0.49,0.5,0.49,0.48,0.5,0.4,0.09,-0.06,-0.1,0.01,-0.01,-0.1,Republican,Democract,Democrat,Republican,Democrat,Democrat
+Kansas,0.36,0.57,0.38,0.6,0.42,0.57,0.37,0.62,0.37,0.58,0.36,0.54,0.21,0.22,0.15,0.25,0.21,0.18,Republican,Republican,Republican,Republican,Republican,Republican
+Kentucky,0.33,0.63,0.38,0.6,0.41,0.57,0.4,0.6,0.41,0.57,0.46,0.45,0.3,0.22,0.16,0.2,0.16,-0.01,Republican,Republican,Republican,Republican,Republican,Democrat
+Louisiana,0.38,0.58,0.41,0.58,0.4,0.59,0.42,0.57,0.45,0.53,0.52,0.4,0.2,0.17,0.19,0.15,0.08,-0.12,Republican,Republican,Republican,Republican,Republican,Democrat
+Maine,0.48,0.45,0.56,0.41,0.58,0.4,0.54,0.45,0.49,0.44,0.52,0.31,-0.03,-0.15,-0.18,-0.09,-0.05,-0.21,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+Maryland,0.6,0.34,0.62,0.36,0.62,0.36,0.56,0.43,0.57,0.4,0.54,0.38,-0.26,-0.26,-0.26,-0.13,-0.17,-0.16,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+Massachusetts,0.6,0.33,0.61,0.38,0.62,0.36,0.62,0.37,0.6,0.33,0.61,0.28,-0.27,-0.23,-0.26,-0.25,-0.27,-0.33,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+Michigan,0.47,0.48,0.54,0.45,0.57,0.41,0.51,0.48,0.51,0.46,0.52,0.38,0.01,-0.09,-0.16,-0.03,-0.05,-0.14,Republican,Democract,Democrat,Democrat,Democrat,Democrat
+Minnesota,0.46,0.45,0.53,0.45,0.54,0.44,0.51,0.48,0.48,0.46,0.51,0.35,-0.01,-0.08,-0.1,-0.03,-0.02,-0.16,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+Mississippi,0.4,0.58,0.44,0.55,0.43,0.56,0.4,0.59,0.41,0.58,0.44,0.49,0.18,0.11,0.13,0.19,0.17,0.05,Republican,Republican,Republican,Republican,Republican,Republican
+Missouri,0.38,0.57,0.44,0.54,0.49,0.49,0.46,0.53,0.47,0.5,0.48,0.41,0.19,0.1,0,0.07,0.03,-0.07,Republican,Republican,Democrat,Republican,Republican,Democrat
+Montana,0.36,0.56,0.42,0.55,0.47,0.5,0.39,0.59,0.33,0.58,0.41,0.44,0.2,0.13,0.03,0.2,0.25,0.03,Republican,Republican,Republican,Republican,Republican,Republican
+Nebraska,0.34,0.59,0.38,0.6,0.42,0.57,0.33,0.66,0.33,0.62,0.35,0.54,0.25,0.22,0.15,0.33,0.29,0.19,Republican,Republican,Republican,Republican,Republican,Republican
+Nevada,0.48,0.46,0.52,0.46,0.55,0.43,0.48,0.5,0.46,0.5,0.44,0.43,-0.02,-0.06,-0.12,0.02,0.04,-0.01,Democrat,Democract,Democrat,Republican,Republican,Democrat
+New Hampshire,0.47,0.46,0.52,0.46,0.54,0.45,0.5,0.49,0.47,0.48,0.49,0.39,-0.01,-0.06,-0.09,-0.01,0.01,-0.1,Democrat,Democract,Democrat,Democrat,Republican,Democrat
+New Jersey,0.55,0.41,0.58,0.41,0.57,0.42,0.53,0.46,0.56,0.4,0.54,0.36,-0.14,-0.17,-0.15,-0.07,-0.16,-0.18,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+New Mexico,0.48,0.4,0.53,0.43,0.57,0.42,0.49,0.5,0.48,0.48,0.49,0.42,-0.08,-0.1,-0.15,0.01,0,-0.07,Democrat,Democract,Democrat,Republican,Democrat,Democrat
+New York,0.59,0.37,0.63,0.35,0.63,0.36,0.58,0.4,0.6,0.35,0.59,0.31,-0.22,-0.28,-0.27,-0.18,-0.25,-0.28,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+North Carolina,0.46,0.5,0.48,0.5,0.5,0.49,0.44,0.56,0.43,0.56,0.44,0.49,0.04,0.02,-0.01,0.12,0.13,0.05,Republican,Republican,Democrat,Republican,Republican,Republican
+North Dakota,0.27,0.63,0.39,0.58,0.45,0.53,0.36,0.63,0.33,0.61,0.4,0.47,0.36,0.19,0.08,0.27,0.28,0.07,Republican,Republican,Republican,Republican,Republican,Republican
+Ohio,0.44,0.52,0.51,0.48,0.52,0.47,0.49,0.51,0.46,0.5,0.47,0.41,0.08,-0.03,-0.05,0.02,0.04,-0.06,Republican,Democract,Democrat,Republican,Republican,Democrat
+Oklahoma,0.29,0.65,0.33,0.67,0.34,0.66,0.34,0.66,0.38,0.6,0.4,0.48,0.36,0.34,0.32,0.32,0.22,0.08,Republican,Republican,Republican,Republican,Republican,Republican
+Oregon,0.5,0.39,0.54,0.42,0.57,0.4,0.51,0.47,0.47,0.47,0.47,0.39,-0.11,-0.12,-0.17,-0.04,0,-0.08,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+Pennsylvania,0.47,0.48,0.52,0.47,0.54,0.44,0.51,0.48,0.51,0.46,0.49,0.4,0.01,-0.05,-0.1,-0.03,-0.05,-0.09,Republican,Democract,Democrat,Democrat,Democrat,Democrat
+Rhode Island,0.54,0.39,0.63,0.35,0.63,0.35,0.59,0.39,0.61,0.32,0.6,0.27,-0.15,-0.28,-0.28,-0.2,-0.29,-0.33,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+South Carolina,0.41,0.55,0.44,0.55,0.45,0.54,0.41,0.58,0.41,0.57,0.44,0.5,0.14,0.11,0.09,0.17,0.16,0.06,Republican,Republican,Republican,Republican,Republican,Republican
+South Dakota,0.32,0.62,0.4,0.58,0.45,0.53,0.38,0.6,0.38,0.6,0.43,0.46,0.3,0.18,0.08,0.22,0.22,0.03,Republican,Republican,Republican,Republican,Republican,Republican
+Tennessee,0.35,0.61,0.39,0.59,0.42,0.57,0.43,0.57,0.47,0.51,0.48,0.46,0.26,0.2,0.15,0.14,0.04,-0.02,Republican,Republican,Republican,Republican,Republican,Democrat
+Texas,0.43,0.52,0.41,0.57,0.44,0.55,0.38,0.61,0.38,0.59,0.44,0.49,0.09,0.16,0.11,0.23,0.21,0.05,Republican,Republican,Republican,Republican,Republican,Republican
+Utah,0.27,0.46,0.25,0.73,0.34,0.63,0.26,0.72,0.26,0.67,0.33,0.54,0.19,0.48,0.29,0.46,0.41,0.21,Republican,Republican,Republican,Republican,Republican,Republican
+Vermont,0.57,0.3,0.67,0.31,0.67,0.3,0.59,0.39,0.51,0.41,0.53,0.31,-0.27,-0.36,-0.37,-0.2,-0.1,-0.22,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+Virginia,0.5,0.44,0.51,0.47,0.53,0.46,0.45,0.54,0.44,0.52,0.45,0.47,-0.06,-0.04,-0.07,0.09,0.08,0.02,Democrat,Democract,Democrat,Republican,Republican,Republican
+Washington,0.53,0.37,0.56,0.41,0.58,0.4,0.53,0.46,0.5,0.45,0.5,0.37,-0.16,-0.15,-0.18,-0.07,-0.05,-0.13,Democrat,Democract,Democrat,Democrat,Democrat,Democrat
+West Virginia,0.26,0.69,0.36,0.62,0.43,0.56,0.43,0.56,0.46,0.52,0.52,0.37,0.43,0.26,0.13,0.13,0.06,-0.15,Republican,Republican,Republican,Republican,Republican,Democrat
+Wisconsin,0.46,0.47,0.53,0.46,0.56,0.42,0.5,0.49,0.48,0.48,0.49,0.38,0.01,-0.07,-0.14,-0.01,0,-0.11,Republican,Democract,Democrat,Democrat,Democrat,Democrat
+Wyoming,0.22,0.68,0.28,0.69,0.33,0.65,0.29,0.69,0.28,0.68,0.37,0.5,0.46,0.41,0.32,0.4,0.4,0.13,Republican,Republican,Republican,Republican,Republican,Republican
