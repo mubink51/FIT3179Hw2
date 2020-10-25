@@ -1,0 +1,155 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 600,
+  "background": "#f5f3ed",
+  "title": {
+    "text": "Comparison of Income and Average Age across US states 2018 ",
+    "fontSize": 30
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/final.csv"
+  },
+  "params": [
+    {
+      "name": "party_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "Republicans", "Democrats"],
+        "labels": ["Show All"],
+        "name": "Party selection"
+      }
+    },
+    {
+      "name": "population_above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 35000000,
+        "step": 100000,
+        "name": "Minimum Population"
+      }
+    },
+    {
+      "name": "average_age_param",
+      "value": 32,
+      "bind": {
+        "input": "range",
+        "min": 32,
+        "max": 42,
+        "name": "Minimum Avg Age"
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "party_selection == null || datum.Winning_Party == party_selection"
+    },
+    {"filter": "datum.population > population_above"},
+    {"filter": "datum.Average_Age > average_age_param"},
+    {"calculate": "datum.Average_Income-32000", "as": "avg_income"}
+  ],
+  "mark": "circle",
+  "layer": [
+    {
+      "selection": {
+        "region_highlight": {
+          "type": "multi",
+          "fields": ["Region"],
+          "bind": "legend",
+          "on": "mouseover"
+        },
+        "state_highlight": {
+          "type": "multi",
+          "fields": ["state"],
+          "bind": "legend",
+          "on": "mouseover"
+        }
+      },
+      "mark": "circle",
+      "encoding": {
+        "x": {
+          "field": "Average_Age",
+          "type": "quantitative",
+          "title": "Average Age",
+          "axis": {"tickCount": 5, "titleFontSize": 20},
+          "scale": {"type": "linear", "domain": [32, 43]}
+        },
+        "y": {
+          "field": "avg_income",
+          "type": "quantitative",
+          "title": "Average Income above mean",
+          "axis": {"tickCount": 4, "titleFontSize": 20},
+          "scale": {"type": "linear", "domain": [-12500, 12500]}
+        },
+        "tooltip": [
+          {"field": "state", "title": "State"},
+          {"field": "Average_Age", "title": "Average Age", "format": ".2f"},
+          {
+            "field": "Average_Income",
+            "title": "Average Income",
+            "format": "$00,.0f"
+          },
+          {"field": "population", "title": "Population", "format": ","},
+          {"field": "Specific_Region", "title": "Sub Region"}
+        ],
+        "size": {
+          "condition": {
+            "selection": "region_highlight",
+            "field": "population",
+            "scale": {
+              "type": "threshold",
+              "domain": [1000000, 2500000, 5000000, 10000000],
+              "range": [330, 600, 900, 1200, 1500]
+            }
+          },
+          "value": 0,
+          "legend": {"format": ".1s"}
+        },
+        "color": {
+          "field": "Region",
+          "type": "nominal",
+          "scale": {
+            "domain": ["North East", "South", "Mid West", "West"],
+            "range": ["#decbe4", "#1f78b4", "#fbb4ae", "#33a02c"]
+          }
+        },
+        "opacity": {
+          "condition": {"selection": "state_highlight", "value": 0.75},
+          "value": 0.2
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "dx": 0
+      },
+      "encoding": {
+        "x": {
+          "field": "Average_Age",
+          "type": "quantitative",
+          "title": "Average Age",
+          "axis": {"tickCount": 3}
+        },
+        "y": {
+          "field": "avg_income",
+          "type": "quantitative",
+          "title": "Average Income above mean",
+          "axis": {"tickCount": 4},
+          "scale": {"type": "linear", "domain": [-12500, 12500]}
+        },
+        "text": {"field": "state_abr"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {"selection": "region_highlight", "value": 0.8},
+          "value": 0
+        }
+      }
+    }
+  ],
+  "config": {}
+}
