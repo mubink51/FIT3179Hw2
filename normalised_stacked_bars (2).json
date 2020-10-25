@@ -1,0 +1,75 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/normalised_data.csv"
+  },
+  "background": "#f5f3ed",
+  "width": 500,
+  "height": 600,
+  "params": [
+    {
+      "name": "year_select",
+      "value": 2016,
+      "bind": {
+        "input": "range",
+        "min": 1996,
+        "max": 2016,
+        "step": 4,
+        "name": "Select Election"
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Year==year_select"},
+    {
+      "calculate": "datum.Party == 'Dem'? 'Democrat':'Republican'",
+      "as": "Politic"
+    }
+  ],
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "y": {
+          "aggregate": "sum",
+          "field": "vote",
+          "stack": "normalize",
+          "title": "Proportion of Vote"
+        },
+        "x": {"field": "Region"},
+        "color": {
+          "field": "Politic",
+          "scale": {"range": ["#125be3", "#e31212"]},
+          "title": "Political Party"
+        },
+        "tooltip": [
+          {"field": "Region"},
+          {"field": "prop", "format": ".2f", "title": "Proportion"}
+        ]
+      }
+    },
+    {
+      "data": {"values": [{}]},
+      "encoding": {"y": {"datum": 0.5}},
+      "layer": [
+        {
+          "mark": "rule",
+          "encoding": {"size": {"value": 4}, "color": {"value": "gray"}}
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "bottom",
+            "dx": 60,
+            "dy": 5,
+            "x": "width",
+            "text": "Majority",
+            "size": 14
+          }
+        }
+      ]
+    }
+  ],
+  "config": {}
+}
