@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 800,
-  "height": 550,
+  "width": 600,
+  "height": 450,
   "background": "#f5f3ed",
   "title": {"text": "US Election Results 1996-2016", "fontSize": 30},
   "data": {
@@ -22,6 +22,15 @@
         "step": 4,
         "name": "Select Election"
       }
+    },
+    {
+      "name": "Map_type",
+      "bind": {
+        "input": "radio",
+        "options": ["WP", "MOV"],
+        "labels": ["Winning Party", "Margin Of Victory"],
+        "name": "Show: "
+      }
     }
   ],
   "transform": [
@@ -29,53 +38,134 @@
       "lookup": "properties.name",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/elections96_16.csv"
+          "url": "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/elections96_16numeric2.csv"
         },
         "key": "State",
-        "fields": ["2016", "2012", "2008", "2004", "2000", "1996", "State"]
+        "fields": [
+          "WP2016",
+          "WP2012",
+          "WP2008",
+          "WP2004",
+          "WP2000",
+          "WP1996",
+          "MOV2016",
+          "MOV2012",
+          "MOV2008",
+          "MOV2004",
+          "MOV2000",
+          "MOV1996",
+          "State",
+          "2016",
+          "2012",
+          "2008",
+          "2004",
+          "2000",
+          "1996",
+          "W2016",
+          "W2012",
+          "W2008",
+          "W2004",
+          "W2000",
+          "W1996"
+        ]
       }
     },
-    {"calculate": "datum[year_select]", "as": "year_selection"},
+    {"calculate": "datum[Map_type+year_select]", "as": "year_selection"},
+    {"calculate": "datum[year_select]", "as": "winning_party"},
+    {"calculate": "datum['W'+year_select]", "as": "winning_party2"},
+    {"calculate": "abs(datum['MOV'+year_select])", "as": "mov"},
     {"calculate": "year_select + 'Winning Party'", "as": "tootleip"}
   ],
-  "projection": {"type": "albersUSA"},
-  "selection": {
-    "region_highlight": {
-      "type": "multi",
-      "fields": ["State"],
-      "bind": "legend",
-      "on": "mouseover"
+  "layer": [
+    {
+      "projection": {"type": "albersUsa"},
+      "selection": {
+        "region_highlight": {
+          "type": "multi",
+          "fields": ["State"],
+          "bind": "legend",
+          "on": "mouseover"
+        }
+      },
+      "mark": {"type": "geoshape", "stroke": "white"},
+      "encoding": {
+        "stroke": {
+          "condition": {"selection": "region_highlight", "value": "white"},
+          "value": "black"
+        },
+        "color": {
+          "field": "winning_party",
+          "type": "quantitative",
+          "title": "Size of Republican Victory",
+          "scale": {
+            "type": "threshold",
+            "domain": [-0.15, -0.03, 0, 0.03, 0.15],
+            "range": [
+              "#125be3",
+              "#389ed9",
+              "#dcf0fa",
+              "#f2aeae",
+              "#eb6363",
+              "#e31212"
+            ]
+          }
+        },
+        "opacity": {
+          "condition": {"selection": "region_highlight", "value": 1},
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "State", "title": "State"},
+          {"field": "winning_party2", "title": "Winning Party"},
+          {"field": "mov", "title": "Margin of Victory"}
+        ]
+      }
+    },
+    {
+      "projection": {"type": "albersUsa"},
+      "mark": {"type": "geoshape", "stroke": "white"},
+      "encoding": {
+        "stroke": {
+          "condition": {"selection": "region_highlight", "value": "white"},
+          "value": "white"
+        },
+        "color": {
+          "field": "year_selection",
+          "type": "quantitative",
+          "title": "Size of Republican Victory",
+          "scale": {
+            "type": "threshold",
+            "domain": [-0.15, -0.03, 0, 0.03, 0.15],
+            "range": [
+              "#125be3",
+              "#2799db",
+              "#92c5de",
+              "#ed8a8a",
+              "#e05353",
+              "#e31212"
+            ]
+          }
+        },
+        "opacity": {
+          "condition": {"selection": "region_highlight", "value": 1},
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "State", "title": "State"},
+          {"field": "winning_party2", "title": "Winning Party"},
+          {"field": "mov", "title": "Margin of Victory"}
+        ]
+      }
     }
-  },
-  "mark": {"type": "geoshape", "stroke": "white"},
-  "encoding": {
-    "stroke": {
-      "condition": {"selection": "region_highlight", "value": "white"},
-      "value": "black"
-    },
-    "color": {
-      "field": "year_selection",
-      "type": "nominal",
-      "title": "Party",
-      "scale": {"range": ["#125be3", "#e31212"]}
-    },
-    "opacity": {
-      "condition": {"selection": "region_highlight", "value": 0.9},
-      "value": 0.2
-    },
-    "tooltip": [
-      {"field": "State", "title": "State"},
-      {"field": "year_selection", "title": "Party"}
-    ]
-  },
+  ],
   "config": {
     "legend": {
       "orient": "none",
-      "legendX": 520,
-      "legendY": 30,
+      "legendX": 380,
+      "legendY": 5,
       "direction": "horizontal",
       "labelFontSize": 12,
-      "titleFontSize": 15,
+      "titleFontSize": 14,
       "titlePadding": 5
     },
     "style": {"cell": {"stroke": "transparent"}}
