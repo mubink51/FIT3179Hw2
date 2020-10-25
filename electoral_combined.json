@@ -1,0 +1,126 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 600,
+  "height": 450,
+  "background": "#f5f3ed",
+  "title": {"text": "US Election Results 1996-2016", "fontSize": 30},
+  "data": {
+    "url": "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/ne_110m_admin_1_states_provinces%20(1).json",
+    "format": {
+      "type": "topojson",
+      "feature": "ne_110m_admin_1_states_provinces"
+    }
+  },
+  "params": [
+    {
+      "name": "year_select",
+      "value": 2016,
+      "bind": {
+        "input": "range",
+        "min": 1996,
+        "max": 2016,
+        "step": 4,
+        "name": "Select Election"
+      }
+    },
+    {
+      "name": "Map_type",
+      "bind": {
+        "input": "radio",
+        "options": ["WP", "MOV"],
+        "labels": ["Winning Party", "Margin Of Victory"],
+        "name": "Show: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/mubink51/FIT3179Hw2/main/elections96_16numeric2.csv"
+        },
+        "key": "State",
+        "fields": [
+          "WP2016",
+          "WP2012",
+          "WP2008",
+          "WP2004",
+          "WP2000",
+          "WP1996",
+          "MOV2016",
+          "MOV2012",
+          "MOV2008",
+          "MOV2004",
+          "MOV2000",
+          "MOV1996",
+          "State",
+          "2016",
+          "2012",
+          "2008",
+          "2004",
+          "2000",
+          "1996"
+        ]
+      }
+    },
+    {"calculate": "datum[Map_type+year_select]", "as": "year_selection"},
+    {"calculate": "datum[year_select]", "as": "winning_party"},
+    {"calculate": "abs(datum['MOV'+year_select])", "as": "mov"},
+    {"calculate": "year_select + 'Winning Party'", "as": "tootleip"}
+  ],
+  "projection": {"type": "albersUsa"},
+  "selection": {
+    "region_highlight": {
+      "type": "multi",
+      "fields": ["State"],
+      "bind": "legend",
+      "on": "mouseover"
+    }
+  },
+  "mark": {"type": "geoshape", "stroke": "white"},
+  "encoding": {
+    "stroke": {
+      "condition": {"selection": "region_highlight", "value": "white"},
+      "value": "black"
+    },
+    "color": {
+      "field": "year_selection",
+      "type": "quantitative",
+      "title": "Size of Republican Victory",
+      "scale": {
+        "type": "threshold",
+        "domain": [-0.15, -0.03, 0, 0.03, 0.15],
+        "range": [
+          "#125be3",
+          "#0e84c9",
+          "#92c5de",
+          "#ed8a8a",
+          "#e05353",
+          "#e31212"
+        ]
+      }
+    },
+    "opacity": {
+      "condition": {"selection": "region_highlight", "value": 0.9},
+      "value": 0.2
+    },
+    "tooltip": [
+      {"field": "State", "title": "State"},
+      {"field": "winning_party", "title": "Winning Party"},
+      {"field": "mov", "title": "Margin of Victory"}
+    ]
+  },
+  "config": {
+    "legend": {
+      "orient": "none",
+      "legendX": 380,
+      "legendY": 5,
+      "direction": "horizontal",
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "titlePadding": 5
+    },
+    "style": {"cell": {"stroke": "transparent"}}
+  }
+}
